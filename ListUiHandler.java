@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class ListUiHandler {
-    Scanner in = new Scanner(System.in);
+public class ListUiHandler implements UiHandler {
+    private final Scanner in = new Scanner(System.in);
 
     public void call() {
         List list = new ArrayList();
@@ -13,11 +13,14 @@ public class ListUiHandler {
                 case 1:
                     System.out.println("List.isEmpty() == " + list.isEmpty());
                     break;
-                case 2:
+
+                case 2: {
                     System.out.println("Введите элемент для поиска");
                     String item = in.next();
                     System.out.println(String.format("List.contains(%s) == %b", item, list.contains(item)));
-                    break;
+                }
+                break;
+
                 case 3:
                     System.out.print("Введите элемент: ");
                     list.add(in.next());
@@ -46,7 +49,7 @@ public class ListUiHandler {
         }
     }
 
-    private static void showMenu() {
+    private void showMenu() {
         System.out.println("Выберете действие над коллекцией:");
         System.out.println("1. isEmpty");
         System.out.println("2. contains");
